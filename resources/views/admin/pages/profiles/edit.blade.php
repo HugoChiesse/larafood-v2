@@ -1,0 +1,28 @@
+@extends('adminlte::page')
+
+@section('title', "Editar o Perfil {$profile->name}")
+
+@section('content_header')
+    <h1>Editar o Perfil {{ $profile->name }}</h1>
+@stop
+
+@section('content')
+    <div class="card">
+        <div class="card-header">
+        </div>
+        <div class="card-body">
+            <form action="{{ route('profiles.update', $profile->id) }}" class="form" method="POST">
+                @method('put')
+                @include('admin.pages.profiles._partials.form')
+            </form>
+        </div>
+    </div>
+@stop
+
+{{-- @section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+@stop
+
+@section('js')
+    <script> console.log('Hi!'); </script>
+@stop --}}
