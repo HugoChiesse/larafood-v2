@@ -16,7 +16,7 @@ class CreateDetailPlansTable extends Migration
         Schema::create('detail_plans', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('plan_id');
-            $table->string('name')->unique();
+            $table->string('name');
             $table->string('description')->nullable();
             $table->timestamps();
             

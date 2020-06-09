@@ -26,7 +26,7 @@
                 <thead>
                     <tr>
                         <th>Nome</th>
-                        <th width="150px">Ações</th>
+                        <th width="200px">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,6 +36,9 @@
                             <td>
                                 <a href="{{ route('permissions.show', $permission->id) }}" class="btn btn-warning">Ver</a>
                                 <a href="{{ route('permissions.edit', $permission->id) }}" class="btn btn-info">Edit</a>
+                                <a href="{{ route('permissions.profiles', $permission->id) }}" class="btn btn-success">
+                                    <i class="far fa-id-badge"></i>
+                                </a>
                             </td>
                         </tr>
                     @endforeach

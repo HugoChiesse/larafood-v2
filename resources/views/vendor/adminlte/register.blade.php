@@ -29,12 +29,47 @@
         <div class="card">
             <div class="card-body register-card-body">
                 <p class="login-box-msg">{{ __('adminlte::adminlte.register_message') }}</p>
-                <form action="{{ $register_url }}" method="post">
+
+            <p><strong>Plano: </strong>{{ session('plan')->name ?? '-' }}</p>
+
+                <form action="{{ route('register') }}" method="post">
                     {{ csrf_field() }}
 
                     <div class="input-group mb-3">
+                        <input type="text" name="company" class="form-control {{ $errors->has('company') ? 'is-invalid' : '' }}" value="{{ old('company') }}"
+                               placeholder="Company" autofocus>
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-user"></span>
+                            </div>
+                        </div>
+
+                        @if ($errors->has('company'))
+                            <div class="invalid-feedback">
+                                <strong>{{ $errors->first('company') }}</strong>
+                            </div>
+                        @endif
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <input type="text" name="cnpj" class="form-control {{ $errors->has('cnpj') ? 'is-invalid' : '' }}" value="{{ old('cnpj') }}"
+                               placeholder="CNPJ">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-user"></span>
+                            </div>
+                        </div>
+
+                        @if ($errors->has('cnpj'))
+                            <div class="invalid-feedback">
+                                <strong>{{ $errors->first('cnpj') }}</strong>
+                            </div>
+                        @endif
+                    </div>
+
+                    <div class="input-group mb-3">
                         <input type="text" name="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" value="{{ old('name') }}"
-                               placeholder="{{ __('adminlte::adminlte.full_name') }}" autofocus>
+                               placeholder="{{ __('adminlte::adminlte.full_name') }}">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>
@@ -47,6 +82,9 @@
                             </div>
                         @endif
                     </div>
+
+
+
                     <div class="input-group mb-3">
                         <input type="email" name="email" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" value="{{ old('email') }}"
                                placeholder="{{ __('adminlte::adminlte.email') }}">

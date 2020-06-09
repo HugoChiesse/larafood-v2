@@ -14,9 +14,9 @@ return [
     |
     */
 
-    'title' => 'LaraFood',
+    'title' => 'Curso Laravel',
     'title_prefix' => '',
-    'title_postfix' => '',
+    'title_postfix' => ' | EspecializaTi',
 
     /*
     |--------------------------------------------------------------------------
@@ -50,7 +50,7 @@ return [
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'LaraFood',
+    'logo_img_alt' => 'Lara Food',
 
     /*
     |--------------------------------------------------------------------------
@@ -66,7 +66,7 @@ return [
 
     'usermenu_enabled' => true,
     'usermenu_header' => false,
-    'usermenu_header_class' => 'bg-primary',
+    'usermenu_header_class' => 'bg-success',
     'usermenu_image' => false,
     'usermenu_desc' => false,
 
@@ -107,7 +107,7 @@ return [
     'classes_content' => '',
     'classes_sidebar' => 'sidebar-dark-primary elevation-4',
     'classes_sidebar_nav' => '',
-    'classes_topnav' => 'navbar-white navbar-light',
+    'classes_topnav' => 'navbar-green navbar-light',
     'classes_topnav_nav' => 'navbar-expand-md',
     'classes_topnav_container' => 'container',
 
@@ -211,18 +211,46 @@ return [
         [
             'text' => 'Planos',
             'url'  => 'admin/plans',
-            'icon' => 'fas fa-list-alt'
+            'icon' => 'far fa-list-alt',
+            'can'  => 'planos'
         ],
         [
             'text' => 'Perfis',
             'url'  => 'admin/profiles',
-            'icon' => 'far fa-address-book'
+            'icon' => 'far fa-id-badge',
+            'can'  => 'perfis'
         ],
         [
             'text' => 'Permissão',
             'url'  => 'admin/permissions',
-            'icon' => 'fas fa-lock'
+            'icon' => 'fas fa-lock',
+            'can'  => 'permissões'
         ],
+        [
+            'text' => 'Usuários',
+            'url'  => 'admin/users',
+            'icon' => 'fas fa-users',
+            'can'  => 'usuários'
+        ],
+        [
+            'text' => 'Categorias',
+            'url'  => 'admin/categories',
+            'icon' => 'fas fa-layer-group',
+            'can'  => 'categorias'
+        ],
+        [
+            'text' => 'Produtos',
+            'url'  => 'admin/products',
+            'icon' => 'fas fa-hamburger',
+            'can'  => 'produtos'
+        ],
+        [
+            'text' => 'Mesas',
+            'url'  => 'admin/tables',
+            'icon' => 'fas fa-tablet',
+            'can'  => 'mesas'
+        ],
+        
     ],
 
     /*
@@ -300,7 +328,7 @@ return [
         ],
         [
             'name' => 'Chartjs',
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',

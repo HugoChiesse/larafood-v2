@@ -67,7 +67,7 @@ class DetailPlanController extends Controller
      */
     public function show($urlPlan, $id)
     {
-        $plan = $this->plan->where('url', 'plano-de-teste')->first();
+        $plan = $this->plan->where('url', $urlPlan)->first();
         $detail = $this->repository->find($id);
         if (!$plan || !$detail) {
             return redirect()->back();
@@ -83,7 +83,7 @@ class DetailPlanController extends Controller
      */
     public function edit($urlPlan, $id)
     {
-        $plan = $this->plan->where('url', 'plano-de-teste')->first();
+        $plan = $this->plan->where('url', $urlPlan)->first();
         $detail = $this->repository->find($id);
         if (!$plan || !$detail) {
             return redirect()->back();
