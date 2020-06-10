@@ -209,6 +209,12 @@ return [
 
     'menu' => [
         [
+            'text' => 'Empresas',
+            'url'  => 'admin/tenants',
+            'icon' => 'fas fa-building',
+            'can'  =>  'empresas',
+        ],
+        [
             'text' => 'Planos',
             'url'  => 'admin/plans',
             'icon' => 'far fa-list-alt',
@@ -219,6 +225,12 @@ return [
             'url'  => 'admin/profiles',
             'icon' => 'far fa-id-badge',
             'can'  => 'perfis'
+        ],
+        [
+            'text' => 'Cargos',
+            'url'  => 'admin/roles',
+            'icon' => 'fas fa-address-card',
+            'can'  =>  'papeis',
         ],
         [
             'text' => 'Permissão',
@@ -250,6 +262,7 @@ return [
             'icon' => 'fas fa-tablet',
             'can'  => 'mesas'
         ],
+        
         
     ],
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Events\TenantCreated;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
@@ -73,6 +74,8 @@ class RegisterController extends Controller
         }
         $tenantServece = app(TenantService::class);
         $user = $tenantServece->make($plan, $data);
+
+        event(new TenantCreated($user));
         return $user;
     }
 }

@@ -28,7 +28,7 @@
                     <tr>
                         <th>Nome</th>
                         <th>E-mail</th>
-                        <th width="150px">Ações</th>
+                        <th width="250px">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -39,6 +39,7 @@
                             <td>
                                 <a href="{{ route('users.show', $user->id) }}" class="btn btn-warning">Ver</a>
                                 <a href="{{ route('users.edit', $user->id) }}" class="btn btn-info">Edit</a>
+                                <a href="{{ route('users.roles', $user->id) }}" class="btn btn-info" title="Cargos"><i class="fas fa-address-card"></i> Cargos</a>
                             </td>
                         </tr>
                     @endforeach

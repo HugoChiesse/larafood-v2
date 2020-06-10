@@ -6,7 +6,7 @@ Route::prefix('admin')->namespace('Admin')->middleware('auth')->group(function()
     Route::get('/', 'HomeController@index')->name('admin.index');
 
     Route::get('teste', function () {
-        dd(auth()->user()->isAdmin()); // verifica se o usuário é um administrador
+        // dd(auth()->user()->isAdmin()); // verifica se o usuário é um administrador
         // dd(auth()->user()->hasPermission('Permissão 6')); // verifica se o usuário ter ou não permissão 
         // dd(auth()->user()->permissions()); // verifica quais permissões o usuário tem...
     });
@@ -20,6 +20,24 @@ Route::prefix('admin')->namespace('Admin')->middleware('auth')->group(function()
     Route::get('products/{idProfile}/categories/{idPermission}/delete', 'CategoryProductController@delete')->name('products.categories.delete');
 
     /**
+     * Role x User
+     */
+    Route::get('users/{id}/role/{idRole}/detach', 'RoleUserController@detachRoleUser')->name('users.role.detach');
+    Route::post('users/{id}/roles', 'RoleUserController@attachRolesUser')->name('users.roles.attach');
+    Route::any('users/{id}/roles/create', 'RoleUserController@rolesAvailable')->name('users.roles.available');
+    Route::get('users/{id}/roles', 'RoleUserController@roles')->name('users.roles');
+    Route::get('roles/{id}/users', 'RoleUserController@users')->name('roles.users');
+
+    /**
+     * Permission x Role
+     */
+    Route::get('roles/{id}/permission/{idPermission}/detach', 'PermissionRoleController@detachPermissionRole')->name('roles.permission.detach');
+    Route::post('roles/{id}/permissions', 'PermissionRoleController@attachPermissionsRole')->name('roles.permissions.attach');
+    Route::any('roles/{id}/permissions/create', 'PermissionRoleController@permissionsAvailable')->name('roles.permissions.available');
+    Route::get('roles/{id}/permissions', 'PermissionRoleController@permissions')->name('roles.permissions');
+    Route::get('permissions/{id}/role', 'PermissionRoleController@roles')->name('permissions.roles');
+
+    /**
      * Profile x Permission
      */
     Route::get('profiles/{idProfile}/permissions', 'PermissionProfileController@permissions')->name('profiles.permissions');
@@ -28,18 +46,18 @@ Route::prefix('admin')->namespace('Admin')->middleware('auth')->group(function()
     Route::get('profiles/{idProfile}/permissions/{idPermission}/delete', 'PermissionProfileController@delete')->name('profiles.permissions.delete');
 
     /**
+     * Permission x Profile
+     */
+    Route::get('permissions/{idPermission}/profiles', 'PermissionProfileController@profiles')->name('permissions.profiles');
+
+    /**
      * Profile x Plan
      */
     Route::get('profiles/{idProfile}/plans', 'PlanProfileController@plans')->name('profiles.plans');
     Route::any('profiles/{idProfile}/plans/create', 'PlanProfileController@create')->name('profiles.plans.create');
     Route::post('profiles/{idProfile}/plans/store', 'PlanProfileController@store')->name('profiles.plans.store');
     Route::get('profiles/{idProfile}/plans/{idPlan}/delete', 'PlanProfileController@delete')->name('profiles.plans.delete');
-    
-    /**
-     * Permission x Profile
-     */
-    Route::get('permissions/{idPermission}/profiles', 'PermissionProfileController@profiles')->name('permissions.profiles');
-    
+
     /**
      * Plan x Profile
      */
@@ -66,6 +84,18 @@ Route::prefix('admin')->namespace('Admin')->middleware('auth')->group(function()
      */
     Route::any('products/search', 'ProductController@search')->name('products.search');
     Route::resource('products', 'ProductController');
+
+    /**
+     * Route Tenants
+     */
+    Route::any('tenants/search', 'TenantController@search')->name('tenants.search');
+    Route::resource('tenants', 'TenantController');
+
+    /**
+     * Routes roles
+     */
+    Route::any('roles/search', 'RoleController@search')->name('roles.search');
+    Route::resource('roles', 'RoleController');
 
     /**
      * Route Products
